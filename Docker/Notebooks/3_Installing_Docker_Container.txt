@@ -1,0 +1,5 @@
+Chapter 3: Installing Docker & First Container
+  Install Docker
+  Verify installation
+  First docker run
+  Understanding what just happened (very important)

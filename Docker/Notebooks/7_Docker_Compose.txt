@@ -1,0 +1,9 @@
+Chapter 9: Docker Compose (Multi-Container Apps)
+Why Compose exists
+docker-compose.yml
+Laravel + MySQL setup
+Commands:
+up
+down
+build
+logs

@@ -1,0 +1,11 @@
+Chapter 6: Writing Dockerfile (Most Important Chapter)
+Instructions:
+FROM
+WORKDIR
+COPY
+RUN
+CMD
+ENTRYPOINT
+EXPOSE
+ENV
+You will write Dockerfiles from scratch, not copy.

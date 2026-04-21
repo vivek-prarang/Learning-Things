@@ -1,0 +1,175 @@
+Chapter 2: Docker Architecture (Mental Model)
+
+────────────────────────────────────────────────────────
+
+WHAT IS DOCKER ARCHITECTURE?
+
+Docker is a client-server architecture that allows you to build, package, and run
+applications in isolated containers. Think of Docker as a shipping container system
+for your code - just like shipping containers standardize cargo transport, Docker
+containers standardize application deployment.
+
+────────────────────────────────────────────────────────
+
+1. DOCKER CLIENT
+
+The Docker Client is the primary way users interact with Docker. It's simply a
+command-line tool (CLI) that sends commands to the Docker Engine.
+
+How it works:
+- You type commands like: docker build, docker run, docker stop
+- These commands are sent to the Docker Engine (Daemon)
+- The Engine processes the command and returns results
+- You see the output in your terminal
+
+Example: When you type "docker run nginx", the client communicates with the daemon.
+
+────────────────────────────────────────────────────────
+
+2. DOCKER ENGINE (DAEMON)
+
+The Docker Engine is the core service that runs in the background on your system
+(the "Daemon"). It's the brain of Docker that handles all the heavy lifting.
+
+Responsibilities:
+- Builds Images from Dockerfiles
+- Manages running Containers
+- Handles storage and networking
+- Communicates with the Docker Registry (Docker Hub)
+- Manages resources (CPU, Memory, Disk)
+
+The daemon runs continuously on your machine, listening for commands from the client.
+
+────────────────────────────────────────────────────────
+
+3. IMAGES VS CONTAINERS
+
+Think of it like a recipe (Image) vs a prepared dish (Container)
+
+DOCKER IMAGE:
+- A blueprint or template for creating containers
+- Contains: application code, libraries, dependencies, environment variables
+- Lightweight and portable
+- Immutable (doesn't change once created)
+- Stored as layers
+- Example: ubuntu:20.04, nginx:latest, python:3.9
+
+DOCKER CONTAINER:
+- A running instance of a Docker Image
+- Like a running copy of the blueprint
+- Mutable (can be modified while running)
+- Isolated from other containers and the host system
+- Has its own filesystem, processes, and network
+- Created from an Image but is completely separate
+
+Analogy:
+Image = Class in programming
+Container = Object/Instance of that class
+
+────────────────────────────────────────────────────────
+
+4. DOCKERFILE (Instructions to Build Images)
+
+A Dockerfile is a text file containing step-by-step instructions to build a Docker
+Image. It's like a recipe that tells Docker how to create your application image.
+
+Basic Structure:
+
+FROM ubuntu:20.04          # Start from a base image
+RUN apt-get update         # Execute commands during build
+COPY app.py /app/          # Copy files from host to container
+WORKDIR /app               # Set working directory
+EXPOSE 8080                # Document which port the app uses
+CMD ["python", "app.py"]   # Default command when container starts
+
+Common Instructions:
+- FROM: Specify the base image
+- RUN: Execute commands during build
+- COPY: Copy files from your machine into the image
+- ADD: Like COPY but can download files
+- WORKDIR: Set the working directory
+- ENV: Set environment variables
+- EXPOSE: Document which ports the app uses
+- CMD: Default command to run when container starts
+- ENTRYPOINT: Override default command
+
+────────────────────────────────────────────────────────
+
+5. DOCKER LIFECYCLE: Build → Run → Stop → Remove
+
+The complete workflow from creating an image to removing a container:
+
+STEP 1: BUILD (docker build)
+- You create a Dockerfile
+- Docker reads the Dockerfile
+- Daemon builds the image layer by layer
+- Image is stored locally
+Command: docker build -t myapp:1.0 .
+
+STEP 2: RUN (docker run)
+- You request a container to be created from an image
+- Docker Engine creates a new container
+- Container starts executing its default command
+- Container is now running and isolated
+Command: docker run -d -p 8080:8080 myapp:1.0
+
+STEP 3: STOP (docker stop)
+- You stop a running container gracefully
+- Container shuts down properly
+- Container still exists (not deleted)
+- Can be restarted later
+Command: docker stop container_id
+
+STEP 4: REMOVE (docker rm)
+- You permanently delete a stopped container
+- Cannot be restarted
+- Frees up system resources
+Command: docker rm container_id
+
+Additional Lifecycle Commands:
+- docker pause: Suspend a running container
+- docker unpause: Resume a paused container
+- docker restart: Stop and restart a container
+- docker logs: View container output
+
+────────────────────────────────────────────────────────
+
+6. DOCKER HUB (Public Registry for Images)
+
+Docker Hub is the official public registry where Docker images are stored and shared.
+
+What it is:
+- Central repository for Docker images
+- Free to use (with some limitations)
+- Hosts official images (nginx, python, ubuntu, etc.)
+- Users can upload and share their images
+
+Common Commands:
+docker login          # Authenticate with Docker Hub
+docker pull image     # Download image from Docker Hub
+docker push image     # Upload your image to Docker Hub
+docker search term    # Search for images on Docker Hub
+
+How it works:
+1. Download an existing image: docker pull ubuntu
+2. Create/modify image locally
+3. Tag your image: docker tag myapp myusername/myapp:1.0
+4. Push to Docker Hub: docker push myusername/myapp:1.0
+5. Others can now pull your image: docker pull myusername/myapp:1.0
+
+────────────────────────────────────────────────────────
+
+SUMMARY: HOW IT ALL WORKS TOGETHER
+
+1. Write a Dockerfile with instructions
+2. Use Docker Client to build: docker build
+3. Docker Daemon creates an Image from Dockerfile
+4. Use Docker Client to run: docker run
+5. Docker Engine creates a Container from the Image
+6. Container runs your application in isolation
+7. Use Docker Client to stop: docker stop
+8. Use Docker Client to remove: docker rm
+9. Push your image to Docker Hub: docker push
+10. Others can pull and use your image
+
+────────────────────────────────────────────────────────

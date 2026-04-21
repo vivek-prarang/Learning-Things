@@ -1,0 +1,5 @@
+Registry Commands
+
+docker login
+docker logout
+docker search

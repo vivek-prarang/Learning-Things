@@ -1,0 +1,17 @@
+Chapter 5: Docker Containers (Daily Work Commands)
+
+Commands:
+
+docker run
+
+docker ps / ps -a
+
+docker stop / start / restart
+
+docker rm
+
+docker logs
+
+docker exec
+
+This chapter alone appears in 80% interviews.

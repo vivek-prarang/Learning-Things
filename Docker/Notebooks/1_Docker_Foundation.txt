@@ -1,0 +1,29 @@
+Chapter 1: What Docker Is and Why It Exists
+  Problems before Docker
+  Containers vs Virtual Machines
+  Where Docker is used in real companies
+  How backend devs (Laravel / Python) use it
+
+
+## Working with the large team and multiple environments (dev, staging, prod) was a nightmare before Docker.
+## Docker is a containerization platform that allows you to package your application and its dependencies into a single unit called a container. This makes it easier to develop, deploy, and run applications across different environments without worrying about compatibility issues.
+## Containers are lightweight and share the host system's kernel, while virtual machines (VMs)
+
+
+## Containers VS Virtual Machines:
+* Containers are more lightweight and faster to start than VMs because they share the host system's kernel, while VMs require a full operating system to run. This makes containers ideal for microservices and applications that need to scale quickly.
+
+
+? Should i need to instarall os in docker container?
+No, you do not need to install an operating system in a Docker container. Docker containers share the host system's kernel, so they do not require a separate operating system. Instead, you can use a base image that includes the necessary libraries and dependencies for your application, and then build your container on top of that image. This allows you to create lightweight and efficient containers that can run your application without the overhead of a full operating system.
+
+? is i posibal to run ubuntu in docker container? while i have windows 10 as host os?
+Yes, it is possible to run an Ubuntu container on a Windows 10 host using Docker. Docker uses a lightweight virtual machine to run Linux containers on Windows, so you can run an Ubuntu container without needing to install a full Ubuntu operating system on your host machine. You can pull an official Ubuntu image from Docker Hub and run it as a container on your Windows 10 host. This allows you to use Ubuntu's command-line tools and environment while still running on your Windows machine.
+
+? Where Docker is used in real companies.
+Docker is widely used in real companies across various industries for a range of purposes, including:
+1. Application Development: Docker allows developers to create, test, and deploy applications in a consistent
+environment, making it easier to manage dependencies and ensure that applications run smoothly across different stages of development.
+
+? How backend devs (Laravel / Python) use it
+Backend developers use Docker to create consistent development and production environments, simplify dependency management, and streamline deployment processes. For example, Laravel developers often use Docker to run their applications in isolated containers with specific PHP versions, database configurations, and web servers. Similarly, Python developers use Docker to package their applications with all necessary dependencies (e.g., virtual environments, libraries) into containers that can be easily deployed across different systems. This allows backend developers to focus on writing code without worrying about environment inconsistencies, making it easier to collaborate with other team members and deploy applications to production.

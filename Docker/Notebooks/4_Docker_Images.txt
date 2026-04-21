@@ -1,0 +1,7 @@
+Commands:
+docker pull
+docker images
+docker rmi
+Image layers
+Image tags (latest, versions)
+Interview focus: What is an image really?

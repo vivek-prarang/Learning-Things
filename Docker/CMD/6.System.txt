@@ -1,0 +1,10 @@
+System Commands
+
+docker system df
+docker system events
+docker system info
+docker system prune
+docker version
+docker info
+docker stats
+docker events

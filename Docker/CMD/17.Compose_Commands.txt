@@ -1,0 +1,25 @@
+Compose Commands
+
+docker compose build
+docker compose config
+docker compose create
+docker compose down
+docker compose events
+docker compose exec
+docker compose images
+docker compose kill
+docker compose logs
+docker compose ls
+docker compose pause
+docker compose port
+docker compose ps
+docker compose pull
+docker compose push
+docker compose restart
+docker compose rm
+docker compose run
+docker compose start
+docker compose stop
+docker compose top
+docker compose unpause
+docker compose up

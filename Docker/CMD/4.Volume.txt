@@ -1,0 +1,7 @@
+Volume Commands
+
+docker volume create
+docker volume inspect
+docker volume ls
+docker volume prune
+docker volume rm

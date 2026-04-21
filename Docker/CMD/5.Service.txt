@@ -1,0 +1,11 @@
+Service Commands
+
+docker service create
+docker service inspect
+docker service logs
+docker service ls
+docker service ps
+docker service rm
+docker service rollback
+docker service scale
+docker service update

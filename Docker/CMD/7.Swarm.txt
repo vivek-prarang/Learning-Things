@@ -1,0 +1,9 @@
+Swarm Commands
+
+docker swarm init
+docker swarm join
+docker swarm leave
+docker swarm unlock
+docker swarm unlock-key
+docker swarm update
+docker swarm join-token

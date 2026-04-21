@@ -1,0 +1,7 @@
+Trust Commands
+
+docker trust key generate
+docker trust key load
+docker trust inspect
+docker trust signer add
+docker trust signer remove

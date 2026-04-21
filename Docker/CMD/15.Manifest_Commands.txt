@@ -1,0 +1,7 @@
+Manifest Commands
+
+docker manifest annotate
+docker manifest create
+docker manifest inspect
+docker manifest push
+docker manifest rm
